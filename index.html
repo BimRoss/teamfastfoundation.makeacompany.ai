@@ -567,6 +567,19 @@
   }
   .founder-link:hover { background: var(--red-deep); transform: translateY(-1px); }
   .founder-link svg { flex-shrink: 0; }
+  .founder-actions {
+    display: flex; flex-direction: column; gap: 10px;
+    position: relative; z-index: 1;
+  }
+  .founder-link.secondary {
+    background: transparent; color: var(--white);
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    padding: 10px 20px;
+  }
+  .founder-link.secondary:hover {
+    background: var(--white); color: var(--navy);
+    border-color: var(--white);
+  }
 
   /* Events */
   .events { background: var(--navy); color: var(--white); position: relative; }
@@ -779,6 +792,7 @@
     .founder { grid-template-columns: 1fr; text-align: center; gap: 18px; padding: 28px 24px; margin-top: 36px; }
     .founder-avatar { margin: 0 auto; }
     .founder-link { justify-self: center; }
+    .founder-actions { align-items: center; }
     .camp-victor { padding: 48px 0; }
     .camp-victor-inner { grid-template-columns: 1fr; text-align: center; gap: 18px; }
     .camp-victor-badge { margin: 0 auto; }
@@ -1018,10 +1032,15 @@
           <h3>Nicholas Martone</h3>
           <div class="role">United States Marine Corps · Founded Team FAST in 2019</div>
         </div>
-        <a href="https://www.linkedin.com/in/nicholas-martone-3133b2a5" target="_blank" rel="noopener" class="founder-link">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
-          Connect on LinkedIn
-        </a>
+        <div class="founder-actions">
+          <a href="https://www.linkedin.com/in/nicholas-martone-3133b2a5" target="_blank" rel="noopener" class="founder-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+            Connect on LinkedIn
+          </a>
+          <a href="https://www.wkbw.com/news/local-news/local-marine-veteran-shares-experience-with-ptsd-shares-how-golf-pga-hope-saved-his-life" target="_blank" rel="noopener noreferrer" class="founder-link secondary" aria-label="Read Nick Martone's story on WKBW about PTSD and PGA HOPE">
+            Read His Story <span aria-hidden="true">↗</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>

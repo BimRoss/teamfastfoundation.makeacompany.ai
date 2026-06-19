@@ -8,7 +8,7 @@
 <meta property="og:title" content="Team FAST Foundation" />
 <meta property="og:description" content="Standing with our veterans through reintegration, recovery, and connection." />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="/img/logo.jpg" />
+<meta property="og:image" content="/img/soldier-sunrise.jpg" />
 <link rel="icon" href="/img/logo.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -162,14 +162,29 @@
   .hero-trust .dot.white { background: var(--white); border: 1.5px solid var(--navy); }
   .hero-trust .dot.navy { background: var(--navy); }
 
-  /* Hero logo display */
-  .hero-logo {
+  /* Hero photo display */
+  .hero-photo {
     display: grid; place-items: center;
-    padding: 24px; position: relative;
+    position: relative;
   }
-  .hero-logo img {
-    width: 100%; max-width: 460px; height: auto; display: block;
-    filter: drop-shadow(0 20px 40px rgba(10, 31, 68, 0.18));
+  .hero-photo .frame {
+    position: relative; width: 100%; max-width: 520px;
+    aspect-ratio: 4 / 5; border-radius: 8px; overflow: hidden;
+    box-shadow: 0 30px 60px rgba(10, 31, 68, 0.25);
+    border: 3px solid var(--white);
+    outline: 1px solid var(--line-strong);
+  }
+  .hero-photo .frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero-photo .frame::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(180deg, transparent 55%, rgba(10, 31, 68, 0.45) 100%);
+  }
+  .hero-photo .badge {
+    position: absolute; left: 22px; bottom: 22px; z-index: 2;
+    background: var(--white); color: var(--navy);
+    padding: 10px 16px; border-radius: 4px;
+    font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+    border-left: 3px solid var(--red);
   }
 
   /* Impact band */
@@ -223,6 +238,27 @@
   .pillar p { font-size: 14.5px; color: var(--steel); }
 
   /* Programs */
+  .programs-banner {
+    position: relative; width: 100%; aspect-ratio: 21 / 7;
+    border-radius: 8px; overflow: hidden; margin-bottom: 48px;
+    box-shadow: 0 20px 40px rgba(10, 31, 68, 0.12);
+  }
+  .programs-banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .programs-banner::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(90deg, rgba(10, 31, 68, 0.65) 0%, rgba(10, 31, 68, 0.25) 50%, transparent 100%);
+  }
+  .programs-banner .caption {
+    position: absolute; left: 6%; top: 50%; transform: translateY(-50%);
+    color: var(--white); z-index: 2; max-width: 460px;
+  }
+  .programs-banner .caption h3 {
+    font-size: clamp(22px, 2.6vw, 30px); margin-bottom: 6px;
+    font-family: 'Fraunces', serif; font-style: italic; font-weight: 600;
+  }
+  .programs-banner .caption p {
+    font-size: 14px; color: rgba(255, 255, 255, 0.85);
+  }
   .programs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .program-card {
     background: var(--white); padding: 36px 32px; border-radius: 6px;
@@ -342,6 +378,16 @@
   /* About / Transparency */
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
   .about-narrative p { font-size: 16.5px; color: var(--navy-soft); margin-bottom: 18px; }
+  .about-photo {
+    position: relative; width: 100%; aspect-ratio: 16 / 10;
+    border-radius: 8px; overflow: hidden; margin-bottom: 28px;
+    box-shadow: 0 20px 40px rgba(10, 31, 68, 0.12);
+  }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .about-photo::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    border: 3px solid var(--white); border-radius: 8px;
+  }
   .transparency {
     background: var(--paper-cool); padding: 32px 34px; border-radius: 6px;
     border-top: 4px solid var(--navy);
@@ -391,6 +437,12 @@
   .donate-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
   .donate-narrative h2 { margin-bottom: 18px; }
   .donate-narrative p { font-size: 16.5px; color: var(--steel); margin-bottom: 22px; }
+  .donate-photo {
+    position: relative; width: 100%; aspect-ratio: 21 / 9;
+    border-radius: 8px; overflow: hidden; margin-bottom: 28px;
+    box-shadow: 0 20px 40px rgba(10, 31, 68, 0.12);
+  }
+  .donate-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .donate-impact { display: grid; gap: 12px; margin-bottom: 28px; }
   .donate-impact .line {
     display: flex; gap: 14px; align-items: center; padding: 14px 18px;
@@ -540,8 +592,8 @@
     section.block { padding: 72px 0; }
     .hero { padding: 60px 0 70px; }
     .hero-grid { grid-template-columns: 1fr; gap: 36px; }
-    .hero-logo { order: -1; padding: 0; }
-    .hero-logo img { max-width: 340px; margin: 0 auto; }
+    .hero-photo { order: -1; }
+    .hero-photo .frame { max-width: 420px; margin: 0 auto; aspect-ratio: 5 / 4; }
     .impact-grid { grid-template-columns: repeat(2, 1fr); gap: 36px 20px; }
     .impact-stat .num { font-size: 42px; }
     .mission-grid, .about-grid, .donate-grid, .help-grid, .newsletter-inner { grid-template-columns: 1fr; gap: 40px; }
@@ -658,8 +710,11 @@
           <div><span class="dot navy"></span> No cost to veterans</div>
         </div>
       </div>
-      <div class="hero-logo">
-        <img src="/img/logo.jpg" alt="Team FAST Foundation" />
+      <div class="hero-photo">
+        <div class="frame">
+          <img src="/img/soldier-sunrise.jpg" alt="A soldier kneels in silhouette against a desert sunrise" />
+          <div class="badge">Standing Watch</div>
+        </div>
       </div>
     </div>
   </section>
@@ -726,6 +781,13 @@
         <span class="eyebrow">Programs</span>
         <h2 class="section-title">What we offer, and how it works.</h2>
         <p class="section-lede">Programs are free for any veteran or military family. Three ways in, one mission throughout: nobody walks the reintegration road alone.</p>
+      </div>
+      <div class="programs-banner">
+        <img src="/img/therapy-hands.jpg" alt="A veteran in uniform holding hands with a counselor in a moment of support" />
+        <div class="caption">
+          <h3>Healing happens in the same place service did. Together.</h3>
+          <p>Therapeutic, peer-led, and built for the long haul.</p>
+        </div>
       </div>
       <div class="programs-grid">
         <div class="program-card accent-red">
@@ -901,6 +963,9 @@
       </div>
       <div class="about-grid">
         <div class="about-narrative">
+          <div class="about-photo">
+            <img src="/img/marine-salute.jpg" alt="A Marine in dress uniform offering a salute" />
+          </div>
           <p>Team FAST Foundation was founded by veterans and family members who saw too many friends slip through the cracks between active duty and a civilian life that didn't know how to receive them.</p>
           <p>We're a small, volunteer-driven 501(c)(3). That means the people running this thing are the same people you'll meet in our programs. No layers, no bureaucracy, no executives drawing oversized salaries off your donation.</p>
           <p>Transparency is part of the trust we're asking for. Every dollar tracked, every program measured, every story honored. If you want to dig into our governance or financials, the links to the right will get you there.</p>
@@ -988,6 +1053,9 @@
       </div>
       <div class="donate-grid">
         <div class="donate-narrative">
+          <div class="donate-photo">
+            <img src="/img/american-flag.jpg" alt="A folded American flag, close-up" />
+          </div>
           <p>We're volunteer-led on purpose. No CEO salary, no glossy office. Donations fund recreational therapy retreats, peer programming, family weekends, and the travel, meals, and lodging that make participation free for every veteran we serve.</p>
           <p>Here's where your gift lands:</p>
           <div class="donate-impact">

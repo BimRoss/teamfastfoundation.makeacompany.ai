@@ -238,9 +238,10 @@
   .pillar p { font-size: 14.5px; color: var(--steel); }
 
   /* Programs */
+  .hero-banner-strip { padding: 40px 0 0; }
   .programs-banner {
     position: relative; width: 100%; aspect-ratio: 21 / 7;
-    border-radius: 8px; overflow: hidden; margin-bottom: 48px;
+    border-radius: 8px; overflow: hidden;
     box-shadow: 0 20px 40px rgba(10, 31, 68, 0.12);
   }
   .programs-banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -589,17 +590,25 @@
 
   /* Responsive */
   @media (max-width: 960px) {
-    section.block { padding: 72px 0; }
-    .hero { padding: 60px 0 70px; }
-    .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+    section.block { padding: 56px 0; }
+    .section-head { margin-bottom: 36px; }
+    .hero { padding: 36px 0 48px; }
+    .hero-grid { grid-template-columns: 1fr; gap: 28px; }
     .hero-photo { order: -1; }
-    .hero-photo .frame { max-width: 420px; margin: 0 auto; aspect-ratio: 5 / 4; }
-    .impact-grid { grid-template-columns: repeat(2, 1fr); gap: 36px 20px; }
-    .impact-stat .num { font-size: 42px; }
-    .mission-grid, .about-grid, .donate-grid, .help-grid, .newsletter-inner { grid-template-columns: 1fr; gap: 40px; }
-    .programs-grid, .involved-grid, .events-grid, .stories-grid, .footer-grid { grid-template-columns: 1fr; }
-    .footer-grid { gap: 36px; }
-    .transparency .row { grid-template-columns: 120px 1fr; }
+    .hero-photo .frame { max-width: 100%; margin: 0 auto; aspect-ratio: 5 / 4; border-width: 2px; }
+    .hero-banner-strip { padding: 28px 0 0; }
+    .programs-banner { aspect-ratio: 5 / 4; }
+    .programs-banner .caption { left: 20px; right: 20px; bottom: 18px; top: auto; transform: none; }
+    .programs-banner .caption h3 { font-size: 19px; line-height: 1.2; }
+    .programs-banner .caption p { font-size: 13px; }
+    .impact { padding: 40px 0; }
+    .impact-grid { grid-template-columns: repeat(2, 1fr); gap: 28px 16px; }
+    .impact-stat .num { font-size: 40px; }
+    .impact-stat .label { font-size: 13px; }
+    .mission-grid, .about-grid, .donate-grid, .help-grid, .newsletter-inner { grid-template-columns: 1fr; gap: 32px; }
+    .programs-grid, .involved-grid, .footer-grid { grid-template-columns: 1fr; gap: 16px; }
+    .footer-grid { gap: 32px; margin-bottom: 32px; }
+    .transparency .row { grid-template-columns: 110px 1fr; gap: 12px; }
     .nav-toggle-label { display: block; }
     .nav-links { display: none; }
     .nav-toggle:checked ~ .nav-links {
@@ -608,21 +617,38 @@
       border-bottom: 1px solid var(--line); padding: 8px 28px 18px;
     }
     .nav-toggle:checked ~ .nav-links a { padding: 12px 0; border-bottom: 1px solid var(--line); }
-    .nav-inner { position: relative; }
+    .nav-inner { position: relative; padding: 12px 0; }
     .nav-cta { display: none; }
     .nav-socials { display: none; }
-    .camp-victor-inner { grid-template-columns: 1fr; text-align: center; }
+    .brand img { height: 48px; }
+    .camp-victor { padding: 48px 0; }
+    .camp-victor-inner { grid-template-columns: 1fr; text-align: center; gap: 18px; }
     .camp-victor-badge { margin: 0 auto; }
+    .newsletter { padding: 48px 0; }
   }
   @media (max-width: 560px) {
-    .container { padding: 0 20px; }
-    .crisis-inner { font-size: 13px; padding: 8px 16px; gap: 10px; }
-    .hero h1 { font-size: 36px; }
-    .hero p.lede { font-size: 16.5px; }
+    .container { padding: 0 18px; }
+    .crisis-inner { font-size: 12.5px; padding: 8px 14px; gap: 8px; }
+    .hero h1 { font-size: 32px; }
+    .hero p.lede { font-size: 16px; }
+    .hero-trust { gap: 16px 22px; margin-top: 24px; }
+    .hero-cta .btn-lg { padding: 12px 22px; font-size: 14px; }
     .impact-grid { grid-template-columns: 1fr 1fr; }
-    .program-card { padding: 28px 24px; }
+    .program-card, .involve-card { padding: 24px 22px; }
+    .program-card h3 { font-size: 22px; }
+    .help-intake { padding: 26px 24px; }
+    .donate-box { padding: 26px 24px; }
     .donate-amounts { grid-template-columns: repeat(2, 1fr); }
-    .brand img { height: 46px; }
+    .pillar { padding: 18px 20px; }
+    .pillar h4 { font-size: 17px; }
+    .resource { padding: 18px 20px; gap: 14px; }
+    .resource-icon { width: 40px; height: 40px; font-size: 15px; }
+    h2.section-title { font-size: 26px; }
+    p.section-lede { font-size: 15.5px; }
+    .donate-photo { aspect-ratio: 16 / 9; }
+    .about-photo { aspect-ratio: 16 / 10; }
+    .newsletter form { flex-direction: column; }
+    .newsletter form button { width: 100%; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -673,7 +699,6 @@
       <a href="#help">Get Help</a>
       <a href="#involved">Get Involved</a>
       <a href="#about">About</a>
-      <a href="#events">Events</a>
     </div>
     <div class="nav-right">
       <div class="nav-socials" aria-label="Team FAST on social media">
@@ -699,7 +724,7 @@
       <div>
         <span class="hero-eyebrow">F.A.S.T. — Focusing On Always Strengthening Our Troops</span>
         <h1>Standing with the ones <span class="accent">who stood for us.</span></h1>
-        <p class="lede">Team FAST Foundation walks alongside veterans and their families through reintegration, recovery, and the long road home. Our name is our mission: <strong>Focusing On Always Strengthening Our Troops</strong>.</p>
+        <p class="lede">Walking alongside veterans and their families through reintegration and recovery. Our name is our mission: <strong>Focusing On Always Strengthening Our Troops</strong>.</p>
         <div class="hero-cta">
           <a href="#donate" class="btn btn-red btn-lg">Donate Now</a>
           <a href="#help" class="btn btn-ghost btn-lg">Get Support</a>
@@ -740,6 +765,18 @@
     </div>
   </section>
 
+  <section class="hero-banner-strip" aria-hidden="true">
+    <div class="container">
+      <div class="programs-banner">
+        <img src="/img/therapy-hands.jpg" alt="A veteran holding hands with a counselor in a moment of support" />
+        <div class="caption">
+          <h3>Healing happens in the same place service did. Together.</h3>
+          <p>Therapeutic, peer-led, and built for the long haul.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="mission" class="block mission">
     <div class="container">
       <div class="section-head">
@@ -749,22 +786,20 @@
       </div>
       <div class="mission-grid">
         <div class="mission-narrative">
-          <p>Coming home from service can feel like the loneliest deployment. Structure disappears. Brotherhood fades. The skills that kept you alive overseas don't translate to a civilian commute, a marriage in transition, or a quiet weekend that won't quiet down.</p>
-          <p>Team FAST Foundation was built by veterans and families who've lived it. We pair recreational therapy, peer connection, and continuity of care to give veterans a real off-ramp from isolation and a real on-ramp back into community.</p>
-          <p>The relationship doesn't end when a program ends. We stay in it for the long haul.</p>
+          <p>Coming home can feel like the loneliest deployment. Structure disappears. Brotherhood fades. We were built by veterans and families who've lived it, and we pair recreational therapy, peer connection, and continuity of care to give veterans a real off-ramp from isolation back into community.</p>
         </div>
         <div class="mission-pillars">
           <div class="pillar">
             <h4><span class="letter">F</span>ocusing</h4>
-            <p>Eyes locked on what matters most — the veteran in front of us, the family behind them, the road ahead.</p>
+            <p>Eyes locked on the veteran in front of us, the family behind them, the road ahead.</p>
           </div>
           <div class="pillar">
             <h4>On <span class="letter">A</span>lways</h4>
-            <p>Twenty-two veterans a day means we don't take a day off. The mission is ongoing, year-round.</p>
+            <p>Twenty-two veterans a day means we don't take a day off.</p>
           </div>
           <div class="pillar">
             <h4><span class="letter">S</span>trengthening</h4>
-            <p>Programs built to rebuild — body, mind, brotherhood, and family. Recovery is real work.</p>
+            <p>Programs built to rebuild body, mind, brotherhood, and family.</p>
           </div>
           <div class="pillar">
             <h4>Our <span class="letter">T</span>roops</h4>
@@ -781,13 +816,6 @@
         <span class="eyebrow">Programs</span>
         <h2 class="section-title">What we offer, and how it works.</h2>
         <p class="section-lede">Programs are free for any veteran or military family. Three ways in, one mission throughout: nobody walks the reintegration road alone.</p>
-      </div>
-      <div class="programs-banner">
-        <img src="/img/therapy-hands.jpg" alt="A veteran in uniform holding hands with a counselor in a moment of support" />
-        <div class="caption">
-          <h3>Healing happens in the same place service did. Together.</h3>
-          <p>Therapeutic, peer-led, and built for the long haul.</p>
-        </div>
       </div>
       <div class="programs-grid">
         <div class="program-card accent-red">
@@ -923,38 +951,6 @@
     </div>
   </section>
 
-  <section class="block stories" aria-label="Stories from veterans we serve">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Voices</span>
-        <h2 class="section-title">From the veterans we walk alongside.</h2>
-        <p class="section-lede">Names changed and photos withheld when requested. The stories are real.</p>
-      </div>
-      <div class="stories-grid">
-        <div class="story">
-          <span class="story-mark">"</span>
-          <blockquote>Team FAST was the first place since I got out that I felt like I belonged in a room. I came home thinking the war was over. It wasn't. Now I have brothers who get it, and a number I can call at 2 a.m.</blockquote>
-          <div class="story-by">
-            <div>
-              <div class="who">M., U.S. Marine Corps</div>
-              <div class="role">Program alumnus</div>
-            </div>
-          </div>
-        </div>
-        <div class="story">
-          <span class="story-mark">"</span>
-          <blockquote>I was the spouse trying to hold it all together. The family weekend taught me I didn't have to. Other wives in that room knew what I was carrying without me having to explain it.</blockquote>
-          <div class="story-by">
-            <div>
-              <div class="who">J., Army spouse</div>
-              <div class="role">Family weekend participant</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section id="about" class="block">
     <div class="container">
       <div class="section-head">
@@ -966,9 +962,8 @@
           <div class="about-photo">
             <img src="/img/marine-salute.jpg" alt="A Marine in dress uniform offering a salute" />
           </div>
-          <p>Team FAST Foundation was founded by veterans and family members who saw too many friends slip through the cracks between active duty and a civilian life that didn't know how to receive them.</p>
-          <p>We're a small, volunteer-driven 501(c)(3). That means the people running this thing are the same people you'll meet in our programs. No layers, no bureaucracy, no executives drawing oversized salaries off your donation.</p>
-          <p>Transparency is part of the trust we're asking for. Every dollar tracked, every program measured, every story honored. If you want to dig into our governance or financials, the links to the right will get you there.</p>
+          <p>Founded by veterans and families who saw too many friends slip through the cracks between active duty and a civilian life that didn't know how to receive them.</p>
+          <p>We're a small, volunteer-driven 501(c)(3). The people running this thing are the same people you'll meet in our programs. Transparency is part of the trust we're asking for.</p>
         </div>
         <div class="transparency">
           <h3>Transparency</h3>
@@ -998,48 +993,6 @@
               <dd><span class="tbd">Programs, impact, and finances — published annually</span></dd>
             </div>
           </dl>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="events" class="block events">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Events</span>
-        <h2 class="section-title">Program dates, fundraisers, and ways to gather.</h2>
-        <p class="section-lede">Save the dates. Bring a friend. Bring a check. Bring yourself.</p>
-      </div>
-      <div class="events-grid">
-        <div class="event">
-          <div class="event-date">
-            <span class="day">TBD</span>
-            <span class="month">Retreat</span>
-          </div>
-          <h4>Veterans Retreat — Summer Cohort</h4>
-          <p class="meta">Location and dates announced soon</p>
-          <p>Our flagship recreational therapy immersion for veterans. Application required, no cost to attend.</p>
-          <a href="#help">Apply now →</a>
-        </div>
-        <div class="event">
-          <div class="event-date">
-            <span class="day">TBD</span>
-            <span class="month">Fundraiser</span>
-          </div>
-          <h4>Annual Fundraiser</h4>
-          <p class="meta">Date and venue to be announced</p>
-          <p>Dinner, stories from the cohort, silent auction. Every dollar funds the next cohort directly.</p>
-          <a href="#donate">Sponsor a table →</a>
-        </div>
-        <div class="event">
-          <div class="event-date">
-            <span class="day">TBD</span>
-            <span class="month">Family</span>
-          </div>
-          <h4>Family Weekend Retreat</h4>
-          <p class="meta">For Team FAST alumni and their families</p>
-          <p>A long weekend for the whole family. Recreation, peer connection, and space to breathe together.</p>
-          <a href="mailto:hello@teamfastfoundation.com">Stay in the loop →</a>
         </div>
       </div>
     </div>
@@ -1154,7 +1107,7 @@
           <li><a href="#programs">Recreational Therapy</a></li>
           <li><a href="#programs">Peer Connection</a></li>
           <li><a href="#programs">Family Support</a></li>
-          <li><a href="#events">Events</a></li>
+          <li><a href="#help">Get Help</a></li>
         </ul>
       </div>
       <div class="footer-col">

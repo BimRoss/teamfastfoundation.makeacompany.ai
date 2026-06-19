@@ -70,42 +70,151 @@
   .crisis-bar a { text-decoration: underline; text-underline-offset: 3px; font-weight: 600; }
   .crisis-bar a:hover { color: var(--white); opacity: 0.85; }
 
-  /* Nav */
-  .nav-toggle { display: none; }
-  .nav-toggle-label { display: none; cursor: pointer; padding: 8px; margin: -8px; }
-  .nav-toggle-label span,
-  .nav-toggle-label span::before,
-  .nav-toggle-label span::after {
-    display: block; width: 22px; height: 2px; background: var(--navy);
-    border-radius: 2px; position: relative; transition: transform .2s ease;
+  /* App shell — side rail + content */
+  .app {
+    display: grid;
+    grid-template-columns: 248px minmax(0, 1fr);
+    min-height: 100vh;
   }
-  .nav-toggle-label span::before,
-  .nav-toggle-label span::after { content: ''; position: absolute; left: 0; }
-  .nav-toggle-label span::before { top: -7px; }
-  .nav-toggle-label span::after { top: 7px; }
+  .app > * { min-width: 0; }
+  @media (max-width: 960px) { .app { grid-template-columns: 1fr; } }
 
-  .nav {
-    position: sticky; top: 0; z-index: 50;
-    background: rgba(251, 250, 244, 0.94);
-    backdrop-filter: saturate(140%) blur(12px);
-    border-bottom: 1px solid var(--line);
+  .rail {
+    background: var(--paper-cool);
+    border-right: 1px solid var(--line);
+    padding: 22px 18px 28px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    overflow-y: auto;
   }
-  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; gap: 24px; }
-  .brand { display: flex; align-items: center; gap: 12px; }
-  .brand img { height: 56px; width: auto; display: block; }
-  .nav-links { display: flex; gap: 26px; font-size: 14.5px; color: var(--navy-soft); font-weight: 600; }
-  .nav-right { display: flex; align-items: center; gap: 18px; }
-  .nav-socials { display: flex; gap: 8px; }
-  .nav-socials a {
+  @media (max-width: 960px) {
+    .rail {
+      position: sticky; top: 0; z-index: 40;
+      height: auto;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-right: none;
+      border-bottom: 1px solid var(--line);
+      overflow-x: auto;
+      background: rgba(244, 246, 251, 0.96);
+      backdrop-filter: saturate(140%) blur(10px);
+    }
+    .rail .rail-foot, .rail .rail-section-label { display: none; }
+  }
+
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    padding: 4px 4px 14px;
+    border-bottom: 1px solid var(--line);
+    color: inherit;
+  }
+  .brand img { height: 64px; width: auto; display: block; border-radius: 4px; }
+  @media (max-width: 960px) {
+    .brand { border-bottom: none; padding: 0; flex-shrink: 0; }
+    .brand img { height: 44px; }
+  }
+
+  .rail-section-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--slate);
+    padding: 0 6px;
+    margin-top: 6px;
+  }
+  .rail-nav { display: flex; flex-direction: column; gap: 2px; }
+  .rail-nav a {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    color: var(--navy-soft);
+    font-weight: 600;
+    font-size: 14.5px;
+    transition: background .15s ease, color .15s ease;
+  }
+  .rail-nav a:hover { background: var(--white); color: var(--navy); }
+  .rail-nav a.active {
+    background: var(--navy);
+    color: var(--white);
+    border-left: 3px solid var(--red);
+    padding-left: 9px;
+  }
+  .rail-nav a .ico {
+    width: 18px; height: 18px;
+    display: grid; place-items: center;
+    color: currentColor;
+    flex-shrink: 0;
+  }
+  .rail-nav a .sub {
+    display: block;
+    font-size: 11.5px;
+    color: var(--slate);
+    font-weight: 500;
+    margin-top: 1px;
+    letter-spacing: 0;
+  }
+  .rail-nav a:hover .sub { color: var(--navy-soft); }
+  .rail-nav a.active .sub { color: rgba(255,255,255,0.7); }
+  @media (max-width: 960px) {
+    .rail-nav { flex-direction: row; gap: 4px; flex-shrink: 0; }
+    .rail-nav a { padding: 8px 12px; font-size: 13.5px; white-space: nowrap; border-radius: 4px; }
+    .rail-nav a.active { border-left: none; border-bottom: 2px solid var(--red); padding-left: 12px; padding-bottom: 6px; }
+    .rail-nav a .sub { display: none; }
+    .rail-nav a .ico { display: none; }
+  }
+  .rail-foot { margin-top: auto; display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .rail-crisis {
+    display: block;
+    padding: 12px 14px;
+    border-radius: 6px;
+    background: rgba(178, 34, 52, 0.08);
+    border: 1px solid rgba(178, 34, 52, 0.25);
+    color: var(--navy);
+    font-size: 12.5px; line-height: 1.4;
+  }
+  .rail-crisis strong { display: block; color: var(--red); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 4px; }
+  .rail-crisis a { color: var(--red-deep); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+  .rail-socials { display: flex; gap: 8px; padding: 0 4px; }
+  .rail-socials a {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--white); color: var(--navy);
+    display: grid; place-items: center;
+    transition: background .15s ease, color .15s ease, transform .15s ease;
+    border: 1px solid var(--line);
+  }
+  .rail-socials a:hover { background: var(--red); color: var(--white); border-color: var(--red); transform: translateY(-1px); }
+
+  /* Content area */
+  .content { width: 100%; min-width: 0; }
+
+  /* Topstrip inside content */
+  .topstrip {
+    display: flex; align-items: center; justify-content: flex-end;
+    gap: 14px;
+    padding: 16px clamp(20px, 3vw, 36px) 0;
+    max-width: 1180px; margin: 0 auto;
+  }
+  .topstrip .topstrip-socials { display: flex; gap: 8px; }
+  .topstrip .topstrip-socials a {
     width: 34px; height: 34px; border-radius: 50%;
     background: var(--paper-cool); color: var(--navy);
     display: grid; place-items: center;
     transition: background .15s ease, color .15s ease, transform .15s ease;
     border: 1px solid var(--line);
   }
-  .nav-socials a:hover { background: var(--red); color: var(--white); border-color: var(--red); transform: translateY(-1px); }
-  .nav-links a { transition: color .15s ease; }
-  .nav-links a:hover { color: var(--red); }
+  .topstrip .topstrip-socials a:hover { background: var(--red); color: var(--white); border-color: var(--red); transform: translateY(-1px); }
+  @media (max-width: 960px) {
+    .topstrip { padding: 12px 18px 0; }
+    .topstrip .topstrip-socials { display: none; }
+  }
   .btn {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 11px 22px; border-radius: 4px;
@@ -657,18 +766,6 @@
     .programs-grid, .involved-grid, .footer-grid { grid-template-columns: 1fr; gap: 16px; }
     .footer-grid { gap: 32px; margin-bottom: 32px; }
     .transparency .row { grid-template-columns: 110px 1fr; gap: 12px; }
-    .nav-toggle-label { display: block; }
-    .nav-links { display: none; }
-    .nav-toggle:checked ~ .nav-links {
-      display: flex; position: absolute; top: 100%; left: 0; right: 0;
-      flex-direction: column; gap: 0; background: var(--paper);
-      border-bottom: 1px solid var(--line); padding: 8px 28px 18px;
-    }
-    .nav-toggle:checked ~ .nav-links a { padding: 12px 0; border-bottom: 1px solid var(--line); }
-    .nav-inner { position: relative; padding: 12px 0; }
-    .nav-cta { display: none; }
-    .nav-socials { display: none; }
-    .brand img { height: 48px; }
     .founder { grid-template-columns: 1fr; text-align: center; gap: 18px; padding: 28px 24px; margin-top: 36px; }
     .founder-avatar { margin: 0 auto; }
     .founder-link { justify-self: center; }
@@ -737,38 +834,76 @@
 
 <div class="flag-stripe" aria-hidden="true"></div>
 
-<nav class="nav" aria-label="Primary">
-  <div class="container nav-inner">
+<div class="app">
+  <aside class="rail" aria-label="Primary">
     <a href="#" class="brand" aria-label="Team FAST Foundation home">
       <img src="/img/logo.jpg" alt="Team FAST Foundation logo" />
     </a>
-    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation" />
-    <label for="nav-toggle" class="nav-toggle-label" aria-hidden="true"><span></span></label>
-    <div class="nav-links">
-      <a href="#mission">Mission</a>
-      <a href="#programs">Programs</a>
-      <a href="#help">Get Help</a>
-      <a href="#involved">Get Involved</a>
-      <a href="#about">About</a>
-    </div>
-    <div class="nav-right">
-      <div class="nav-socials" aria-label="Team FAST on social media">
+
+    <div class="rail-section-label">Foundation</div>
+    <nav class="rail-nav">
+      <a href="#mission" class="active">
+        <span class="ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l9 4-3 11H6L3 7z"/><path d="M12 3v18"/></svg></span>
+        <span>Mission<span class="sub">Why we stand</span></span>
+      </a>
+      <a href="#programs">
+        <span class="ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16v6H4z"/><path d="M4 13h16v6H4z"/></svg></span>
+        <span>Programs<span class="sub">How we walk alongside</span></span>
+      </a>
+      <a href="#help">
+        <span class="ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 1 1-3.5-6.9"/><path d="M21 4v6h-6"/></svg></span>
+        <span>Get Help<span class="sub">For veterans and families</span></span>
+      </a>
+      <a href="#involved">
+        <span class="ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="8" r="3.4"/><path d="M2.5 20c.6-3.4 3.4-5.5 6.5-5.5s5.9 2.1 6.5 5.5"/><circle cx="17" cy="9" r="2.6"/><path d="M22 19c-.4-2.3-2.1-3.7-4-3.9"/></svg></span>
+        <span>Get Involved<span class="sub">Volunteer, partner, refer</span></span>
+      </a>
+      <a href="#about">
+        <span class="ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4"/><circle cx="12" cy="16" r="0.9" fill="currentColor"/></svg></span>
+        <span>About<span class="sub">Founders, transparency</span></span>
+      </a>
+      <a href="#donate">
+        <span class="ico"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.6a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+        <span>Donate<span class="sub">100% to veterans</span></span>
+      </a>
+    </nav>
+
+    <div class="rail-foot">
+      <div class="rail-crisis">
+        <strong>Crisis line</strong>
+        <a href="tel:988">Dial 988, press 1</a> · Text <a href="sms:838255">838255</a>
+      </div>
+      <div class="rail-socials" aria-label="Team FAST on social media">
         <a href="https://www.facebook.com/share/1CRtzvzEK5/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/></svg>
         </a>
         <a href="https://www.instagram.com/team_fast_buffalo/" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg>
         </a>
         <a href="https://www.linkedin.com/company/team-f-a-s-t/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
         </a>
       </div>
-      <a href="#donate" class="btn btn-red nav-cta">Donate</a>
     </div>
-  </div>
-</nav>
+  </aside>
 
-<main id="main">
+<main id="main" class="content">
+
+  <div class="topstrip">
+    <div class="topstrip-socials" aria-label="Team FAST on social media">
+      <a href="https://www.facebook.com/share/1CRtzvzEK5/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/></svg>
+      </a>
+      <a href="https://www.instagram.com/team_fast_buffalo/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg>
+      </a>
+      <a href="https://www.linkedin.com/company/team-f-a-s-t/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+      </a>
+    </div>
+    <a href="#donate" class="btn btn-red">Donate</a>
+  </div>
+
 
   <section class="hero">
     <div class="container hero-grid">
@@ -1152,6 +1287,7 @@
   </section>
 
 </main>
+</div><!-- /app -->
 
 <footer>
   <div class="container">
@@ -1225,6 +1361,29 @@
       el.classList.add('active');
     });
   });
+
+  // Rail scrollspy — highlight the section currently in view
+  (function () {
+    var links = document.querySelectorAll('.rail-nav a[href^="#"]');
+    if (!links.length || !('IntersectionObserver' in window)) return;
+    var byId = {};
+    var sections = [];
+    links.forEach(function (a) {
+      var id = a.getAttribute('href').slice(1);
+      var el = document.getElementById(id);
+      if (el) { byId[id] = a; sections.push(el); }
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          links.forEach(function (l) { l.classList.remove('active'); });
+          var a = byId[e.target.id];
+          if (a) a.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+    sections.forEach(function (s) { io.observe(s); });
+  })();
 </script>
 
 </body>

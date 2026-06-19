@@ -133,7 +133,7 @@
   }
 
   /* Hero */
-  .hero { padding: 80px 0 90px; position: relative; overflow: hidden; background: var(--paper); }
+  .hero { padding: 56px 0 64px; position: relative; overflow: hidden; background: var(--paper); }
   .hero::before {
     content: ''; position: absolute; inset: 0;
     background:
@@ -141,7 +141,7 @@
       radial-gradient(800px 500px at 0% 100%, rgba(10, 31, 68, 0.06), transparent 60%);
     pointer-events: none;
   }
-  .hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; position: relative; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 0.85fr; gap: 56px; align-items: center; position: relative; }
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: 10px;
     font-size: 12px; font-weight: 700; color: var(--red);
@@ -168,7 +168,7 @@
     position: relative;
   }
   .hero-photo .frame {
-    position: relative; width: 100%; max-width: 520px;
+    position: relative; width: 100%;
     aspect-ratio: 4 / 5; border-radius: 8px; overflow: hidden;
     box-shadow: 0 30px 60px rgba(10, 31, 68, 0.25);
     border: 3px solid var(--white);
@@ -189,7 +189,7 @@
 
   /* Impact band */
   .impact {
-    background: var(--navy); color: var(--white); padding: 56px 0; position: relative;
+    background: var(--navy); color: var(--white); padding: 44px 0; position: relative;
   }
   .impact::before, .impact::after {
     content: ''; position: absolute; left: 0; right: 0; height: 4px;
@@ -208,8 +208,8 @@
   .impact-stat .label { font-size: 14px; color: rgba(255, 255, 255, 0.78); line-height: 1.4; }
 
   /* Section base */
-  section.block { padding: 96px 0; }
-  .section-head { max-width: 720px; margin-bottom: 56px; }
+  section.block { padding: 72px 0; }
+  .section-head { max-width: 720px; margin-bottom: 44px; }
   .eyebrow {
     display: inline-flex; align-items: center; gap: 10px;
     font-size: 12px; font-weight: 700; color: var(--red);
@@ -223,7 +223,7 @@
 
   /* Mission */
   .mission { background: var(--paper-cool); }
-  .mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
   .mission-narrative p { font-size: 16.5px; color: var(--navy-soft); margin-bottom: 20px; }
   .mission-narrative p:last-child { margin-bottom: 0; }
   .mission-pillars { display: grid; gap: 16px; }
@@ -238,7 +238,7 @@
   .pillar p { font-size: 14.5px; color: var(--steel); }
 
   /* Programs */
-  .hero-banner-strip { padding: 40px 0 0; }
+  .hero-banner-strip { padding: 24px 0 0; }
   .programs-banner {
     position: relative; width: 100%; aspect-ratio: 21 / 7;
     border-radius: 8px; overflow: hidden;
@@ -377,7 +377,7 @@
   .story-by .role { font-size: 13px; color: var(--slate); }
 
   /* About / Transparency */
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: start; }
   .about-narrative p { font-size: 16.5px; color: var(--navy-soft); margin-bottom: 18px; }
   .about-photo {
     position: relative; width: 100%; aspect-ratio: 16 / 10;
@@ -402,7 +402,7 @@
   .transparency dd .tbd { color: var(--slate); font-weight: 500; font-style: italic; font-size: 14px; }
 
   /* Founder card */
-  .founder-section { padding: 56px 0 0; }
+  .founder-section { padding: 24px 0 0; }
   .founder {
     background: var(--navy); color: var(--white);
     border-radius: 8px; padding: 36px 40px; position: relative; overflow: hidden;
@@ -542,7 +542,7 @@
 
   /* Camp Victor — small section at very bottom */
   .camp-victor {
-    background: var(--paper-cool); padding: 64px 0;
+    background: var(--paper-cool); padding: 48px 0;
     border-top: 1px solid var(--line);
   }
   .camp-victor-inner {
@@ -569,7 +569,7 @@
 
   /* Newsletter */
   .newsletter {
-    background: var(--white); padding: 64px 0; border-top: 1px solid var(--line);
+    background: var(--white); padding: 48px 0; border-top: 1px solid var(--line);
   }
   .newsletter-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
   .newsletter h3 { font-size: 28px; margin-bottom: 8px; color: var(--navy); }
@@ -837,7 +837,8 @@
       </div>
       <div class="mission-grid">
         <div class="mission-narrative">
-          <p>Coming home can feel like the loneliest deployment. Structure disappears. Brotherhood fades. We were built by veterans and families who've lived it, and we pair recreational therapy, peer connection, and continuity of care to give veterans a real off-ramp from isolation back into community.</p>
+          <p>Coming home can feel like the loneliest deployment. Structure disappears. Brotherhood fades. The skills that kept you alive overseas don't translate to a quiet civilian weekend that won't quiet down.</p>
+          <p>We were built by veterans and families who've lived it. We pair recreational therapy, peer connection, and continuity of care to give veterans a real off-ramp from isolation back into community, and we stay in it for the long haul.</p>
         </div>
         <div class="mission-pillars">
           <div class="pillar">

@@ -294,6 +294,16 @@
     padding: 10px 16px; border-radius: 4px;
     font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
     border-left: 3px solid var(--red);
+    text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+    transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  }
+  a.hero-photo .badge, .hero-photo a.badge { cursor: pointer; }
+  .hero-photo a.badge:hover, .hero-photo a.badge:focus-visible {
+    background: var(--navy); color: var(--white); transform: translateY(-1px);
+    outline: none;
+  }
+  .hero-photo a.badge .badge-arrow {
+    display: inline-block; font-size: 14px; line-height: 1;
   }
 
   /* Impact band */
@@ -924,7 +934,7 @@
       <div class="hero-photo">
         <div class="frame">
           <img src="/img/soldier-sunrise.jpg" alt="A soldier kneels in silhouette against a desert sunrise" />
-          <div class="badge">Standing Watch</div>
+          <a class="badge" href="https://www.wkbw.com/news/local-news/local-marine-veteran-shares-experience-with-ptsd-shares-how-golf-pga-hope-saved-his-life" target="_blank" rel="noopener noreferrer" aria-label="Standing Watch — read WKBW's story on Nick Martone, PTSD, and PGA HOPE">Standing Watch <span class="badge-arrow" aria-hidden="true">↗</span></a>
         </div>
       </div>
     </div>

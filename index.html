@@ -401,6 +401,54 @@
   .transparency dd { font-size: 15px; color: var(--navy); font-weight: 600; }
   .transparency dd .tbd { color: var(--slate); font-weight: 500; font-style: italic; font-size: 14px; }
 
+  /* Founder card */
+  .founder {
+    margin-top: 56px; background: var(--navy); color: var(--white);
+    border-radius: 8px; padding: 36px 40px; position: relative; overflow: hidden;
+    display: grid; grid-template-columns: auto 1fr auto; gap: 32px; align-items: center;
+  }
+  .founder::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+    background: linear-gradient(180deg, var(--red), var(--red-bright));
+  }
+  .founder::after {
+    content: ''; position: absolute; right: -80px; top: -80px;
+    width: 280px; height: 280px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(200, 39, 59, 0.18), transparent 70%);
+  }
+  .founder-avatar {
+    width: 92px; height: 92px; border-radius: 50%;
+    background: var(--white); color: var(--navy);
+    display: grid; place-items: center; flex-shrink: 0;
+    font-family: 'Fraunces', serif; font-size: 30px; font-weight: 700;
+    border: 3px solid var(--red);
+    position: relative; z-index: 1;
+  }
+  .founder-content { position: relative; z-index: 1; }
+  .founder-content .label {
+    font-size: 12px; font-weight: 700; color: var(--red-bright);
+    text-transform: uppercase; letter-spacing: 0.14em; margin-bottom: 8px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .founder-content .label::before { content: ''; width: 20px; height: 2px; background: var(--red-bright); }
+  .founder-content h3 {
+    font-size: 28px; margin-bottom: 4px; color: var(--white);
+    font-family: 'Fraunces', serif;
+  }
+  .founder-content .role {
+    font-size: 14.5px; color: rgba(255, 255, 255, 0.78); font-weight: 500;
+  }
+  .founder-link {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 12px 22px; background: var(--red); color: var(--white);
+    border-radius: 4px; font-weight: 700; font-size: 14px;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    transition: background .15s ease, transform .15s ease;
+    position: relative; z-index: 1; white-space: nowrap;
+  }
+  .founder-link:hover { background: var(--red-deep); transform: translateY(-1px); }
+  .founder-link svg { flex-shrink: 0; }
+
   /* Events */
   .events { background: var(--navy); color: var(--white); position: relative; }
   .events::before {
@@ -621,6 +669,9 @@
     .nav-cta { display: none; }
     .nav-socials { display: none; }
     .brand img { height: 48px; }
+    .founder { grid-template-columns: 1fr; text-align: center; gap: 18px; padding: 28px 24px; margin-top: 36px; }
+    .founder-avatar { margin: 0 auto; }
+    .founder-link { justify-self: center; }
     .camp-victor { padding: 48px 0; }
     .camp-victor-inner { grid-template-columns: 1fr; text-align: center; gap: 18px; }
     .camp-victor-badge { margin: 0 auto; }
@@ -981,8 +1032,12 @@
               <dd><span class="tbd">Year TBD</span></dd>
             </div>
             <div class="row">
+              <dt>Founder</dt>
+              <dd>Nicholas Martone, USMC</dd>
+            </div>
+            <div class="row">
               <dt>Board</dt>
-              <dd><span class="tbd">Roster coming — names, backgrounds, and military service</span></dd>
+              <dd><span class="tbd">Full roster coming</span></dd>
             </div>
             <div class="row">
               <dt>Form 990</dt>
@@ -994,6 +1049,18 @@
             </div>
           </dl>
         </div>
+      </div>
+      <div class="founder">
+        <div class="founder-avatar" aria-hidden="true">NM</div>
+        <div class="founder-content">
+          <div class="label">Our Founder</div>
+          <h3>Nicholas Martone</h3>
+          <div class="role">Founder &amp; veteran — United States Marine Corps</div>
+        </div>
+        <a href="https://www.linkedin.com/in/nicholas-martone-3133b2a5" target="_blank" rel="noopener" class="founder-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+          Connect on LinkedIn
+        </a>
       </div>
     </div>
   </section>

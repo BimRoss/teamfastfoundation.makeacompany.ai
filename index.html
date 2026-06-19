@@ -402,8 +402,9 @@
   .transparency dd .tbd { color: var(--slate); font-weight: 500; font-style: italic; font-size: 14px; }
 
   /* Founder card */
+  .founder-section { padding: 56px 0 0; }
   .founder {
-    margin-top: 56px; background: var(--navy); color: var(--white);
+    background: var(--navy); color: var(--white);
     border-radius: 8px; padding: 36px 40px; position: relative; overflow: hidden;
     display: grid; grid-template-columns: auto 1fr auto; gap: 32px; align-items: center;
   }
@@ -417,13 +418,12 @@
     background: radial-gradient(circle, rgba(200, 39, 59, 0.18), transparent 70%);
   }
   .founder-avatar {
-    width: 92px; height: 92px; border-radius: 50%;
-    background: var(--white); color: var(--navy);
-    display: grid; place-items: center; flex-shrink: 0;
-    font-family: 'Fraunces', serif; font-size: 30px; font-weight: 700;
+    width: 110px; height: 110px; border-radius: 50%;
+    background: var(--white); flex-shrink: 0;
     border: 3px solid var(--red);
-    position: relative; z-index: 1;
+    position: relative; z-index: 1; overflow: hidden;
   }
+  .founder-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .founder-content { position: relative; z-index: 1; }
   .founder-content .label {
     font-size: 12px; font-weight: 700; color: var(--red-bright);
@@ -861,6 +861,25 @@
     </div>
   </section>
 
+  <section class="block founder-section">
+    <div class="container">
+      <div class="founder">
+        <div class="founder-avatar">
+          <img src="/img/founder-martone.jpg" alt="Nicholas Martone, founder of Team FAST Foundation" />
+        </div>
+        <div class="founder-content">
+          <div class="label">Our Founder</div>
+          <h3>Nicholas Martone</h3>
+          <div class="role">United States Marine Corps · Founded Team FAST in 2019</div>
+        </div>
+        <a href="https://www.linkedin.com/in/nicholas-martone-3133b2a5" target="_blank" rel="noopener" class="founder-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+          Connect on LinkedIn
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section id="programs" class="block">
     <div class="container">
       <div class="section-head">
@@ -1029,7 +1048,7 @@
             </div>
             <div class="row">
               <dt>Founded</dt>
-              <dd><span class="tbd">Year TBD</span></dd>
+              <dd>2019</dd>
             </div>
             <div class="row">
               <dt>Founder</dt>
@@ -1049,18 +1068,6 @@
             </div>
           </dl>
         </div>
-      </div>
-      <div class="founder">
-        <div class="founder-avatar" aria-hidden="true">NM</div>
-        <div class="founder-content">
-          <div class="label">Our Founder</div>
-          <h3>Nicholas Martone</h3>
-          <div class="role">Founder &amp; veteran — United States Marine Corps</div>
-        </div>
-        <a href="https://www.linkedin.com/in/nicholas-martone-3133b2a5" target="_blank" rel="noopener" class="founder-link">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
-          Connect on LinkedIn
-        </a>
       </div>
     </div>
   </section>
